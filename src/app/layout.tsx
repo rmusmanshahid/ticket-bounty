@@ -15,8 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-      >
+      <body>
         <nav
           className="
             supports-backdrop-blur:bg-background/60
