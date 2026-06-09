@@ -1,7 +1,13 @@
 import "./globals.css";
+import { LucideKanban } from "lucide-react";
 import type { Metadata } from "next";
+import { Geist } from "next/font/google";
 import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { homePath, ticketsPath } from "@/paths";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "The Road to Next",
@@ -14,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body>
         <nav
           className="
@@ -25,12 +31,19 @@ export default function RootLayout({
           "
         >
           <div>
-            <Link href={homePath()} className="text-lg font-bold">
-              Home
+            <Link
+              href={homePath()}
+              className={buttonVariants({ variant: "ghost" })}
+            >
+              <LucideKanban />
+              <h1 className="text-lg font-semibold">TicketBounty</h1>
             </Link>
           </div>
           <div>
-            <Link href={ticketsPath()} className="text-sm underline">
+            <Link
+              href={ticketsPath()}
+              className={buttonVariants({ variant: "default" })}
+            >
               Tickets
             </Link>
           </div>
