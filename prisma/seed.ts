@@ -13,16 +13,22 @@ const tickets: Partial<Ticket>[] = [
     title: "Ticket 1",
     content: "This is the first ticket from the database",
     status: "OPEN",
+    deadline: new Date().toISOString().split("T")[0],
+    bounty: 499,
   },
   {
     title: "Ticket 2",
     content: "This is the second ticket from the database",
     status: "DONE",
+    deadline: new Date().toISOString().split("T")[0],
+    bounty: 399,
   },
   {
     title: "Ticket 3",
     content: "This is the third ticket from the database",
     status: "IN_PROGRESS",
+    deadline: new Date().toISOString().split("T")[0],
+    bounty: 599,
   },
 ];
 
