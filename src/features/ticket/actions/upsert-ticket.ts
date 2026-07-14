@@ -28,9 +28,13 @@ const upsertTicketSchema = z.object({
     .string()
     .nonempty({ message: "Deadline is required" })
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Is required"),
-  bounty: z.coerce
-    .number()
-    .nonnegative({ message: "Bounty must be at least 0" }),
+  bounty: z.preprocess(
+    (val) =>
+      val === "" || val === null || val === undefined ? undefined : val,
+    z.coerce
+      .number({ message: "Bounty must be a valid number" })
+      .nonnegative({ message: "Bounty must be 0 or greater" }),
+  ),
 });
 
 export const upsertTicket = async (
